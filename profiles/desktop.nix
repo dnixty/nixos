@@ -46,29 +46,22 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    xorg.xrdb
-    xorg.setxkbmap
-    xorg.xset
-    xorg.xsetroot
-    xorg.xinput
-    xorg.xprop
-    xorg.xauth
-    xorg.xmodmap
-    xorg.xbacklight
-    xorg.xkbcomp
-    xcape
-    xbindkeys
-    xautolock
-    xss-lock
-    xdg_utils
-    xfontsel
-    xterm
+    chromium
     conky
     dzen2
-    pinentry_emacs
-    imagemagick
-    chromium
     firefox
+    imagemagick
+    pinentry_emacs
+    xbindkeys
+    xdg_utils
+    xfontsel
+    xorg.setxkbmap
+    xorg.xbacklight
+    xorg.xkbcomp
+    xorg.xrdb
+    xorg.xset
+    xss-lock
+    xterm
 
     # Unfree
     slack
