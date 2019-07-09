@@ -19,13 +19,6 @@ rec {
   nixpkgs.config.allowUnfree = true;
 
   boot = {
-    # See console messages during early boot.
-    initrd.kernelModules = [ "fbcon" ];
-
-    # Disable console blanking after being idle.
-    kernelParams = [ "consoleblank=0" ];
-
-    # Clean /tmp on boot
     cleanTmpDir = true;
   };
 
@@ -43,25 +36,9 @@ rec {
   time.timeZone = "Europe/London";
 
   # Automatic gc
-  #nix.gc.automatic = true;
-  #nix.gc.dates = "weekly";
-  #nix.gc.options = "--delete-older-than 30d";
-
-  # Disable displaying the NixOS manual in a virtual console.
-  #services.nixosManual = false;
-
-  # Disable the infamous systemd screen/tmux kiler
-  services.logind.extraConfig = ''
-    KillUserProcesses=no
-  '';
-
-  # Increase the amount of inotify watchers
-  # Note that inotify watches consume 1kB on 64-bit machines.
-  boot.kernel.sysctl = {
-    "fs.inotify.max_user_watches"   = 1048576;  # default:  8192
-    "fs.inotify.max_user_instances" =    1024;  # default:   128
-    "fs.inotify.max_queued_events"  =   32768;  # default: 16384
-  };
+  nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 30d";
 
   # Locate will update its database everyday at lunch time
   services.locate.enable = true;
