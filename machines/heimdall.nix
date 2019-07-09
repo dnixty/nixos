@@ -39,4 +39,6 @@
 
   services.xserver.synaptics.enable = true;
   services.xserver.synaptics.twoFingerScroll = true;
+  # Allow proprietary software
+  nixpkgs.config.allowUnfree = true;
 }

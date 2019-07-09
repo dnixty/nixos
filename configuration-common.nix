@@ -15,9 +15,6 @@ rec {
     ./users/dnixty.nix
   ];
 
-  # Allow proprietary software
-  nixpkgs.config.allowUnfree = true;
-
   boot = {
     cleanTmpDir = true;
   };
