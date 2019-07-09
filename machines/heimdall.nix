@@ -7,6 +7,7 @@
     ../profiles/desktop.nix
     ../profiles/nitrokey.nix
     ../profiles/pass.nix
+    ../profiles/redshift.nix
   ];
 
   # Speed up development at the cost of possible build race conditions
