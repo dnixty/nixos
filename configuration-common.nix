@@ -43,4 +43,9 @@ rec {
   # Locate will update its database everyday at lunch time
   services.locate.enable = true;
   services.locate.interval = "00 12 * * *";
+
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = false;
+  };
 }
