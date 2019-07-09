@@ -18,30 +18,22 @@ in {
     displayManager.sessionCommands = "${pkgs.xorg.xhost}/bin/xhost +SI:localhost:$USER";
 
     # Use the pre 18.09 default display manager (slim)
-    displayManager.slim.enable = true;
+    displayManager.slim = {
+      enable = true;
+      defaultUser = "dnixty";
+      theme = ../misc/slim-theme;
+    };
   };
 
   # Configure desktop environment:
   services.xserver.windowManager.session = lib.singleton {
     name = "exwm";
     start = ''
-      ${emacs}/bin/emacs --daemon --eval "(require 'exwm)" -f exwm-enable; exec emacsclient -c
+      conky | dzen2 -p -dock -ta l -fn "DejaVu Sans Mono" &
+      ${emacs}/bin/emacs --daemon --eval "(require 'exwm)" -f exwm-enable
+      exec emacsclient -c
     '';
   };
-
-  # nixpkgs.config = {
-  #   chromium = {
-  #     jre = false;
-  #     enableGoogleTalkPlugin = true;
-  #     enableAdobeFlash = false;
-  #   };
-
-  #   firefox = {
-  #     jre = false;
-  #     enableGoogleTalkPlugin = true;
-  #     enableAdobeFlash = false;
-  #   };
-  # };
 
   fonts = {
     enableFontDir = true;
