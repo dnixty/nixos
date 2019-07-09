@@ -2,6 +2,10 @@
 
 let emacs = import ../pkgs/emacs/config.nix { inherit pkgs; };
 in {
+  imports = [
+    ./emacs.nix
+  ];
+
   # Configure basic X-server stuff:
   services.xserver = {
     enable = true;

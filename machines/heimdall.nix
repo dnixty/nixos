@@ -4,7 +4,6 @@
   imports = [
     ../profiles/desktop.nix
     ../profiles/nitrokey.nix
-    ../profiles/emacs.nix
     ../profiles/pass.nix
   ];
 
