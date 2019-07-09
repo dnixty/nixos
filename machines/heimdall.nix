@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../profiles/anki.nix
     ../profiles/audio.nix
     ../profiles/desktop.nix
     ../profiles/nitrokey.nix
