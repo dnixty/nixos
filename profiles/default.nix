@@ -1,19 +1,20 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+#    ../pkgs/emacs/config.nix
+    ../pkgs/vim/config.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     curl
-    dtach
+    git
     gnupg
     openssl
-    sudo
-    unzip
-    w3m
     stow
+    unzip
+    vim_configurable
     wget
     youtube-dl
-    zip
-    git
-    vim
   ];
 }
