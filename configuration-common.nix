@@ -45,4 +45,17 @@ rec {
     enable = true;
     wheelNeedsPassword = false;
   };
+
+  # Additional key bindings
+  programs.light.enable = true;
+  services.actkbd = {
+    enable = true;
+    bindings = [
+      { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
+      { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
+      { keys = [ 113 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+      { keys = [ 114 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/pactl set-sink-volume @DEFAULT_SINK@ -2%"; }
+      { keys = [ 115 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/pactl set-sink-volume @DEFAULT_SINK@ +2%"; }
+    ];
+  };
 }
