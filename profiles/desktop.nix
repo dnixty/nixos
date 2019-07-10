@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 let emacs = import ../pkgs/emacs/config.nix { inherit pkgs; };
+    keyboardLayout = pkgs.runCommand "keyboard-layout" {} ''
+    ${pkgs.xorg.xkbcomp}/bin/xkbcomp -I${../misc/xkb} ${../misc/xkb/usim.xkb} $out
+    '';
 in {
   imports = [
     ./emacs.nix
@@ -10,12 +13,13 @@ in {
   services.xserver = {
     enable = true;
     layout = "us";
-    xkbOptions = "caps:ctrl_modifier";
     exportConfiguration = true;
-    enableCtrlAltBackspace = true;
 
     # Give EXWM permission to control the session.
-    displayManager.sessionCommands = "${pkgs.xorg.xhost}/bin/xhost +SI:localhost:$USER";
+    displayManager.sessionCommands = ''
+      ${pkgs.xorg.xhost}/bin/xhost +SI:localhost:$USER
+      ${pkgs.xorg.xkbcomp}/bin/xkbcomp ${keyboardLayout} $DISPLAY
+    '';
 
     # Use the pre 18.09 default display manager (slim)
     displayManager.slim = {
@@ -52,11 +56,9 @@ in {
     firefox
     imagemagick
     pinentry_emacs
-    xbindkeys
     xdg_utils
     xfontsel
     xorg.setxkbmap
-    xorg.xbacklight
     xorg.xkbcomp
     xorg.xrdb
     xorg.xset
