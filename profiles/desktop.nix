@@ -13,7 +13,8 @@ in {
   # Configure basic X-server stuff:
   services.xserver = {
     enable = true;
-    layout = "us";
+    autoRepeatDelay = 250;
+    autoRepeatInterval = 30;
     exportConfiguration = true;
 
     # Give EXWM permission to control the session.
