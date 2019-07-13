@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 with lib;
 
-let secrets = import ./secrets.nix;
+let secrets = import ../secrets.nix;
 in
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${secrets.username} = {
+  users.users.dnixty = {
     isNormalUser = true;
     group = "users";
     createHome = true;
-    home = "/home/${secrets.username}";
+    home = "/home/dnixty";
     uid = 1000;
     extraGroups = [
       "wheel"
@@ -25,9 +25,9 @@ in
   system.activationScripts =
   {
     # Configure dotfiles.
-    dotfiles = stringAfter [ "users" ]
+    dotfiles = stringAfter [ "users" "groups" ]
     ''
-      cd /home/${secrets.username}
+      runuser -l dnixty '${pkgs.nix-channel}/bin/nix-channel --update'
     '';
   };
 }

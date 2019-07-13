@@ -26,7 +26,7 @@ in {
     # Use the pre 18.09 default display manager (slim)
     displayManager.slim = {
       enable = true;
-      defaultUser = "${secrets.username}";
+      defaultUser = "dnixty";
       theme = ../misc/slim-theme;
     };
   };
