@@ -50,11 +50,9 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    chromium
     conky
     dzen2
     firefox
-    imagemagick
     pinentry_emacs
     xdg_utils
     xfontsel
@@ -64,9 +62,5 @@ in {
     xorg.xset
     xss-lock
     xterm
-
-    # Unfree
-    slack
-    zoom-us
   ];
 }

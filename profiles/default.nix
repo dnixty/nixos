@@ -2,7 +2,6 @@
 
 {
   imports = [
-#    ../pkgs/emacs/config.nix
     ../pkgs/vim/config.nix
   ];
 
@@ -12,9 +11,7 @@
     gnupg
     openssl
     stow
-    unzip
     vim_configurable
     wget
-    youtube-dl
   ];
 }
