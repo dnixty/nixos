@@ -48,8 +48,8 @@ rec {
 
   # Gnupg
   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
+    enable = true;
+    enableSSHSupport = true;
   };
 
   # Environment

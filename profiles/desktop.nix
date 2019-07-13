@@ -54,8 +54,6 @@ in {
   environment.systemPackages = with pkgs; [
     conky
     dzen2
-    firefox
-    pinentry_emacs
     xdg_utils
     xfontsel
     xorg.setxkbmap
