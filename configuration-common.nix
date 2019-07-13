@@ -52,5 +52,11 @@ rec {
      enableSSHSupport = true;
   };
 
+  # Environment
+  environment = {
+    variables = {
+      # Set $TMPDIR so that it is the same inside and outside Nix shells.
+      TMPDIR = "/var/run/user/$UID";
+    };
   };
 }
