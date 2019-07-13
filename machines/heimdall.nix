@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../profiles/anki.nix
+   imports = [
     ../profiles/audio.nix
     ../profiles/desktop.nix
     ../profiles/nitrokey.nix
