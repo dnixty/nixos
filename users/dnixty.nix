@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
 
-let secrets = import ../secrets.nix;
-in
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dnixty = {
@@ -27,7 +25,7 @@ in
     # Configure dotfiles.
     dotfiles = stringAfter [ "users" "groups" ]
     ''
-      runuser -l dnixty '${pkgs.nix-channel}/bin/nix-channel --update'
+      cd /home/dnixty
     '';
   };
 }
