@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let emacs = import ../pkgs/emacs/config.nix { inherit pkgs; };
+let secrets = import ../secrets.nix;
+    emacs = import ../pkgs/emacs/config.nix { inherit pkgs; };
     keyboardLayout = pkgs.runCommand "keyboard-layout" {} ''
     ${pkgs.xorg.xkbcomp}/bin/xkbcomp -I${../misc/xkb} ${../misc/xkb/usim.xkb} $out
     '';
@@ -24,7 +25,7 @@ in {
     # Use the pre 18.09 default display manager (slim)
     displayManager.slim = {
       enable = true;
-      defaultUser = "dnixty";
+      defaultUser = ${secrets.username};
       theme = ../misc/slim-theme;
     };
   };
