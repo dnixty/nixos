@@ -28,8 +28,10 @@
     options resume=/dev/nixos-vg/swap
   '';
 
-  networking.hostName = "heimdall";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "heimdall";
+    networkmanager.enable = true;
+  };
 
   powerManagement.enable = true;
 
