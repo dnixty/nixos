@@ -12,7 +12,7 @@ rec {
     ./services/default.nix
 
     # Create user accounts
-    ./users/dnixty.nix
+    ./users.nix
   ];
 
   boot = {

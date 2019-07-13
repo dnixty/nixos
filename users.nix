@@ -4,12 +4,12 @@ with lib;
 let secrets = import ../secrets.nix;
 in
 {
- # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dnixty = {
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.${secrets.username} = {
     isNormalUser = true;
     group = "users";
     createHome = true;
-    home = "/home/dnixty";
+    home = "/home/${secrets.username}";
     uid = 1000;
     extraGroups = [
       "wheel"
@@ -19,7 +19,7 @@ in
       "networkmanager"
     ];
 
-#    openssh.authorizedKeys.keys = secret.sshKeys.yeah;
+  # openssh.authorizedKeys.keys = secret.sshKeys.yeah;
   };
 
   system.activationScripts =
@@ -27,7 +27,7 @@ in
     # Configure dotfiles.
     dotfiles = stringAfter [ "users" ]
     ''
-      cd /home/dnixty
+      cd /home/${secrets.username}
     '';
   };
 }
