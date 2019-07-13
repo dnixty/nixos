@@ -46,5 +46,11 @@ rec {
     wheelNeedsPassword = false;
   };
 
+  # Gnupg
+  programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+  };
+
   };
 }
