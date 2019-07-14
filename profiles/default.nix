@@ -9,6 +9,7 @@
     curl
     git
     gnupg
+    mlocate
     openssl
     stow
     vim_configurable
