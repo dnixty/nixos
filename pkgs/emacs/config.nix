@@ -10,6 +10,7 @@ in emacsWithPackages(epkgs:
     pinentry
     rainbow-mode
     undo-tree
+    pdf-tools
   ]) ++
 
   # MELPA packages:
@@ -19,7 +20,6 @@ in emacsWithPackages(epkgs:
     csv-mode
     daemons
     desktop-environment
-#   disk-usage
     elfeed
     esh-autosuggest
     expand-region
@@ -35,7 +35,6 @@ in emacsWithPackages(epkgs:
     helm-eww
     helm-flycheck
     helm-ls-git
-#   helm-org-contacts
     helm-pass
     helm-slime
     helm-system-packages
@@ -54,16 +53,14 @@ in emacsWithPackages(epkgs:
     nix-mode
     org
     org-bullets
-#   org-contrib
+    org-plus-contrib
     orgit
-    pdf-tools
     pulseaudio-control
     rainbow-delimiters
     slime
     slime-company
     tide
     typescript-mode
-#   w3m
     web-mode
     youtube-dl
     ztree

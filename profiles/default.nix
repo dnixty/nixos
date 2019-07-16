@@ -9,6 +9,13 @@
     curl
     git
     gnupg
+
+    gnumake
+    autogen
+    autoconf
+    automake
+
+
     openssl
     stow
     vim_configurable
