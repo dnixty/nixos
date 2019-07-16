@@ -49,11 +49,9 @@
     accelFactor = "0.075";
   };
 
-  # Allow proprietary software
-  nixpkgs.config.allowUnfree = true;
-
   # Additional key bindings
   programs.light.enable = true;
+
   services.actkbd = {
     enable = true;
     bindings = [
