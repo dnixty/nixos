@@ -5,7 +5,6 @@
     ../profiles/audio.nix
     ../profiles/desktop.nix
     ../profiles/nitrokey.nix
-    ../profiles/pass.nix
     ../profiles/redshift.nix
   ];
 
