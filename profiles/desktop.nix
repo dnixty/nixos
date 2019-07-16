@@ -21,6 +21,7 @@ in {
     displayManager.sessionCommands = ''
       ${pkgs.xorg.xhost}/bin/xhost +SI:localhost:$USER
       ${pkgs.xorg.xkbcomp}/bin/xkbcomp ${keyboardLayout} $DISPLAY
+      ${pkgs.xss-lock}/bin/xss-lock slock &
     '';
 
     # Use the pre 18.09 default display manager (slim)
@@ -51,9 +52,14 @@ in {
     ];
   };
 
+  # Overwrite setuid wrappers
+  security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
+
   environment.systemPackages = with pkgs; [
     conky
     dzen2
+    slim
+    slock
     xdg_utils
     xfontsel
     xorg.setxkbmap
