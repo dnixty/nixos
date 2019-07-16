@@ -61,4 +61,15 @@
       { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
     ];
   };
+
+  boot.postBootCommands = ''
+    mkdir -p /mnt/archive
+  '';
+
+  # NFS resources
+  fileSystems."/mnt/archive" = {
+    device = "asgard:/volume1/archive";
+    fsType = "nfs";
+    options = ["rw" "async" "noauto" "_netdev"];
+  };
 }
