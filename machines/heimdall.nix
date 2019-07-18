@@ -23,10 +23,6 @@
     }
   ];
 
-  boot.extraModprobeConfig = ''
-    options resume=/dev/nixos-vg/swap
-  '';
-
   networking = {
     hostName = "heimdall";
     networkmanager.enable = true;
