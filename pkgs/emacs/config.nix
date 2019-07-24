@@ -56,6 +56,7 @@ in emacsWithPackages(epkgs:
     org-plus-contrib
     orgit
     pulseaudio-control
+    prettier-js
     rainbow-delimiters
     slime
     slime-company
