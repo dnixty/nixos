@@ -28,16 +28,10 @@ in
         description = "Enable auto login";
         type = types.bool;
       };
-      redshift = mkOption {
-        default = true;
-        description = "Enable redshift with desktop profile";
-        type = types.bool;
-      };
     };
   };
   config = mkIf cfg.enable {
     profiles.pulseaudio.enable = cfg.pulseaudio;
-    profiles.redshift.enable = cfg.redshift;
 
     hardware.bluetooth.enable = true;
 

@@ -11,7 +11,6 @@
     ./profiles/pulseaudio.nix
     ./profiles/nix-auto-update.nix
     ./profiles/nix-config.nix
-    ./profiles/redshift.nix
     ./profiles/users.nix
     ./profiles/vpn.nix
   ];
