@@ -1,8 +1,14 @@
 {
+  hostname = "";
+
   # hosts
   extraHosts = ''
   '';
 
-  username = "user";
-  email = "user@email.com";
+  username = "";
+
+  git = {
+    name = "";
+    email = "";
+  };
 }
