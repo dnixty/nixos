@@ -1,0 +1,4 @@
+* My NixOS system configuration
+
+** Installation
+Clone this repo.
