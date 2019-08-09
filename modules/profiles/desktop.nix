@@ -52,6 +52,7 @@ in
         # Give EXWM permission to control the session.
         sessionCommands = ''
           ${pkgs.xorg.xhost}/bin/xhost +SI:localhost:$USER
+          ${pkgs.xss-lock}/bin/xss-lock slock &
         '';
 
         slim = {
@@ -62,6 +63,7 @@ in
         };
       };
     };
+    security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
     fonts = {
       enableFontDir = true;
       enableGhostscriptFonts = true;
@@ -73,6 +75,7 @@ in
     };
     environment.systemPackages = with pkgs; [
       xss-lock
+      slock
     ];
   };
 }
