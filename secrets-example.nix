@@ -1,6 +1,13 @@
 {
   hostname = "";
 
+  networks = {
+    name = {
+      ssid = "";
+      psk = "";
+    };
+  };
+
   # hosts
   extraHosts = ''
   '';
