@@ -9,7 +9,7 @@ in
     profiles.nitrokey = {
       enable = mkOption {
         default = false;
-        description = "Enable yubikey profile";
+        description = "Enable nitrokey profile";
         type = types.bool;
       };
     };
