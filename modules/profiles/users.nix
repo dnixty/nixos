@@ -31,6 +31,8 @@ in
           home = "/home/${secrets.username}";
           extraGroups = [ "wheel" "input" ] ++ optionals config.profiles.desktop.enable ["audio" "video" "lp" "networkmanager"]
             ++ optionals config.profiles.nitrokey.enable [ "nitrokey" ];
+          openssh.authorizedKeys.keys =
+            with import ../../secrets.nix; [ ssh.heimdall.key ssh.macbook.key ];
         };
       };
     };

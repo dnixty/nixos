@@ -2,20 +2,32 @@
   hostname = "";
 
   networks = {
-    name = {
+    ssidname = {
       ssid = "";
       psk = "";
     };
   };
 
-  # hosts
-  extraHosts = ''
-  '';
+  hosts = {
+    asgard = "";
+    niflheim = "";
+    midgard = "";
+  };
 
   username = "";
 
   git = {
     name = "";
     email = "";
+  };
+
+  ssh = {
+    port = 22;
+    heimdall = {
+      key = "";
+    };
+    macbook = {
+      key = "";
+    };
   };
 }

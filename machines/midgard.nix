@@ -8,18 +8,18 @@ in
   boot = {
     loader = {
       grub.enable = false;
-    };
-    raspberryPi = {
-      enable = true;
-      version = 3;
-      uboot.enable = true;
-      firmwareConfig = ''
-        gpu_mem=256
-      '';
+      raspberryPi = {
+        enable = true;
+        version = 3;
+        uboot.enable = true;
+        firmwareConfig = ''
+          gpu_mem=256
+        '';
+      };
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = ["cma=256M"];
-    cleanTmp = true;
+    cleanTmpDir = true;
   };
 
   hardware.enableRedistributableFirmware = true;
@@ -33,6 +33,7 @@ in
 
   profiles = {
     openssh.enable = true;
+    git.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

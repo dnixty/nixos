@@ -9,6 +9,7 @@
     ./profiles/laptop.nix
     ./profiles/nitrokey.nix
     ./profiles/pulseaudio.nix
+    ./profiles/openssh.nix
     ./profiles/nix-auto-update.nix
     ./profiles/nix-config.nix
     ./profiles/users.nix

@@ -3,6 +3,7 @@
 with lib;
 let
   cfg = config.profiles.openssh;
+  secrets = import ../../secrets.nix;
 in
 {
   options = {
@@ -17,7 +18,9 @@ in
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      permitRootLogin = "yes";
+      passwordAuthentication = false;
+      permitRootLogin = "no";
+      ports = [ secrets.ssh.port ];
     };
   };
 }
