@@ -9,7 +9,6 @@
         { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
       ];
     };
-    acpid.enable = true;
 
     xserver.synaptics = {
       enable = true;
@@ -24,6 +23,4 @@
   };
 
   programs.light.enable = true;
-
-  powerManagement.enable = true;
 }

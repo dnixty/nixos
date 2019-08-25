@@ -23,46 +23,20 @@ in
         description = "Enable networkmanager with desktop profile";
         type = types.bool;
       };
-      autoLogin = mkOption {
-        default = false;
-        description = "Enable auto login";
-        type = types.bool;
-      };
     };
   };
   config = mkIf cfg.enable {
     profiles.pulseaudio.enable = cfg.pulseaudio;
-
-    hardware.bluetooth.enable = true;
-
     networking.networkmanager = {
       enable = cfg.networkmanager;
-      unmanaged = [
-        "interface-name:wg0" "interface-name:docker0"
-      ];
       packages = with pkgs; [ networkmanager-openvpn ];
     };
     services.xserver = {
       enable = true;
-      autoRepeatDelay = 250;
-      autoRepeatInterval = 30;
       xkbOptions = "ctrl:swapcaps";
-
-      displayManager = {
-        # Give EXWM permission to control the session.
-        sessionCommands = ''
-          ${pkgs.xorg.xhost}/bin/xhost +SI:localhost:$USER
-          ${pkgs.xss-lock}/bin/xss-lock slock &
-        '';
-
-        slim = {
-          enable = true;
-          autoLogin = cfg.autoLogin;
-          defaultUser = "${secrets.username}";
-          theme = ./assets/slim-theme;
-        };
-      };
+      displayManager.startx.enable = true;
     };
+    services.mingetty.autologinUser = "${secrets.username}";
     security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
     fonts = {
       enableFontDir = true;

@@ -17,20 +17,8 @@ in
   };
 
   config = mkIf cfg.enable {
-
     # Move to profiles/cron?
     services.locate.enable = true;
     services.locate.interval = "00 12 * * *";
-
-    environment = {
-      systemPackages = with pkgs; [
-        curl
-        gnumake
-        openssl
-        stow
-        vim
-        wget
-      ];
-    };
   };
 }

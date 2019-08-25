@@ -16,8 +16,5 @@ in
   };
   config = mkIf cfg.enable {
     profiles.desktop.enable = true;
-    environment.systemPackages = with pkgs; [
-      acpi
-    ];
   };
 }
