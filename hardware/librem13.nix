@@ -23,4 +23,5 @@
   };
 
   programs.light.enable = true;
+  powerManagement.enable = true;
 }

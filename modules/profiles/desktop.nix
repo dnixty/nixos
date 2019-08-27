@@ -23,6 +23,11 @@ in
         description = "Enable networkmanager with desktop profile";
         type = types.bool;
       };
+      autoLogin = mkOption {
+        default = true;
+        description = "Enable auto login";
+        type = types.bool;
+      };
     };
   };
   config = mkIf cfg.enable {
@@ -33,10 +38,18 @@ in
     };
     services.xserver = {
       enable = true;
+      autoRepeatDelay = 250;
+      autoRepeatInterval = 30;
       xkbOptions = "ctrl:swapcaps";
-      displayManager.startx.enable = true;
+      displayManager = {
+        slim = {
+          enable = true;
+          autoLogin = cfg.autoLogin;
+          defaultUser = "${secrets.username}";
+          theme = ./assets/slim-theme;
+        };
+      }; 
     };
-    services.mingetty.autologinUser = "${secrets.username}";
     security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
     fonts = {
       enableFontDir = true;
