@@ -10,6 +10,7 @@
       ];
     };
 
+    # TODO: Change to libinput as synaptics is deprecated
     xserver.synaptics = {
       enable = true;
       twoFingerScroll = true;
