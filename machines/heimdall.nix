@@ -41,14 +41,10 @@ in
     nix-config.buildCores = 4;
   };
 
-  boot.postBootCommands = ''
-    mkdir -p /mnt/archive
-  '';
-
   # NFS resources
   fileSystems."/mnt/archive" = {
     device = "${secrets.hosts.asgard}:/volume1/archive";
     fsType = "nfs";
-    options = ["rw" "async" "noauto" "_netdev"];
+    options = ["x-systemd.automount" "noauto"];
   };
 }
