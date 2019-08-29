@@ -49,8 +49,12 @@ in
       device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
     };
+    "/mnt/bitcoin" = {
+      device = "${secrets.hosts.asgard}:/volume1/bitcoin";
+      fsType = "nfs";
+      options = ["x-systemd.automount" "noauto"];
+    };
   };
-
 
   swapDevices = [ { device = "/swapfile"; size = 1024; } ];
 }

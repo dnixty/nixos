@@ -12,11 +12,36 @@ in
         description = "Enable bitcoin profile";
         type = types.bool;
       };
+      autostart = mkOption {
+        default = false;
+        description = "Autostart bitcoind on boot";
+        type = types.bool;
+      };
+      configDir = mkOption {
+        default = "/mnt/bitcoin";
+        description = "Bitcoin data location";
+        type = types.string;
+      };
     };
   };
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       altcoins.bitcoin
     ];
+    systemd.user.services.bitcoind = {
+      enable = cfg.autostart;
+      description = "Bitcoin daemon";
+      serviceConfig = {
+        ExecStartPre="/bin/sh -c 'sleep 30'";
+        ExecStart = "${pkgs.altcoins.bitcoin}/bin/bitcoind -daemon -conf=${cfg.configDir}/bitcoin.conf -pid=${cfg.configDir}/bitcoin.pid";
+        PIDFile="${cfg.configDir}/bitcoin.pid";
+        Type = "forking";
+        KillMode = "process";
+        Restart = "always";
+        TimeoutSec = 120;
+        RestartSec = 30;
+      };
+      wantedBy = [ "multi-user.target" ];
+    };
   };
 }
