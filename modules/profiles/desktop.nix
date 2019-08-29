@@ -42,13 +42,16 @@ in
       autoRepeatInterval = 30;
       xkbOptions = "ctrl:swapcaps";
       displayManager = {
+        sessionCommands = ''
+          ${pkgs.xss-lock}/bin/xss-lock slock &
+        '';
         slim = {
           enable = true;
           autoLogin = cfg.autoLogin;
           defaultUser = "${secrets.username}";
           theme = ./assets/slim-theme;
         };
-      }; 
+      };
     };
     security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
     fonts = {
