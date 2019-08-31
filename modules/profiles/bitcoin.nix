@@ -13,7 +13,7 @@ in
         type = types.bool;
       };
       autostart = mkOption {
-        default = false;
+        default = true;
         description = "Autostart bitcoind on boot";
         type = types.bool;
       };
