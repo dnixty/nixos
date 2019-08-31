@@ -28,7 +28,7 @@ in
     environment.systemPackages = with pkgs; [
       altcoins.bitcoind
     ];
-    systemd.user.services.bitcoind = {
+    systemd.services.bitcoind = {
       enable = cfg.autostart;
       description = "Bitcoin daemon";
       serviceConfig = {
