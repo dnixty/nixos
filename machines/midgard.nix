@@ -34,6 +34,8 @@ in
   profiles = {
     openssh.enable = true;
     git.enable = true;
+    bitcoin.enable = true;
+    bitcoin.autostart = true;
   };
 
   environment.systemPackages = with pkgs; [

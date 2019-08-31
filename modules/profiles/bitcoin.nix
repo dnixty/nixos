@@ -26,14 +26,14 @@ in
   };
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      altcoins.bitcoin
+      altcoins.bitcoind
     ];
     systemd.user.services.bitcoind = {
       enable = cfg.autostart;
       description = "Bitcoin daemon";
       serviceConfig = {
         ExecStartPre="/bin/sh -c 'sleep 30'";
-        ExecStart = "${pkgs.altcoins.bitcoin}/bin/bitcoind -daemon -conf=${cfg.configDir}/bitcoin.conf -pid=${cfg.configDir}/bitcoin.pid";
+        ExecStart = "${pkgs.altcoins.bitcoind}/bin/bitcoind -daemon -conf=${cfg.configDir}/bitcoin.conf -pid=${cfg.configDir}/bitcoin.pid";
         PIDFile="${cfg.configDir}/bitcoin.pid";
         Type = "forking";
         KillMode = "process";
