@@ -25,7 +25,7 @@ in
     };
   };
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ 8333 18333 ];
+    networking.firewall.allowedTCPPorts = [ 8332 18332 ];
     environment.systemPackages = with pkgs; [
       unstable.bitcoind
     ];
@@ -34,7 +34,7 @@ in
       description = "Bitcoin daemon";
       serviceConfig = {
         ExecStartPre="/bin/sh -c 'sleep 30'";
-        ExecStart = "${pkgs.altcoins.bitcoind}/bin/bitcoind -daemon -datadir=${cfg.configDir} -pid=${cfg.configDir}/bitcoind.pid";
+        ExecStart = "${pkgs.unstable.bitcoind}/bin/bitcoind -daemon -datadir=${cfg.configDir} -pid=${cfg.configDir}/bitcoind.pid";
         PIDFile="${cfg.configDir}/bitcoind.pid";
         Type = "forking";
         KillMode = "process";
