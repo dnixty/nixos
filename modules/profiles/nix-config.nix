@@ -3,6 +3,9 @@
 with lib;
 let
   cfg = config.profiles.nix-config;
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
 in
 {
   options = {
@@ -33,6 +36,13 @@ in
     };
   };
   config = mkIf cfg.enable {
+    nixpkgs.config = {
+      packageOverrides = pkgs: {
+        unstable = import unstableTarball {
+          config = config.nixpkgs.config;
+        };
+      };
+    };
     nix = {
       buildCores = cfg.buildCores;
       useSandbox = true;
