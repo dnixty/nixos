@@ -16,7 +16,7 @@ in
     initrd.luks.devices = [
       {
         name = "root";
-        device = "/dev/nvme0n1p3";
+        device = "/dev/nvme0n1p2";
         preLVM = true;
       }
     ];
