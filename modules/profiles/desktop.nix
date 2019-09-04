@@ -23,11 +23,6 @@ in
         description = "Enable networkmanager with desktop profile";
         type = types.bool;
       };
-      autoLogin = mkOption {
-        default = true;
-        description = "Enable auto login";
-        type = types.bool;
-      };
     };
   };
   config = mkIf cfg.enable {
@@ -45,11 +40,9 @@ in
         sessionCommands = ''
           ${pkgs.xss-lock}/bin/xss-lock slock &
         '';
-        slim = {
+        auto = {
           enable = true;
-          autoLogin = cfg.autoLogin;
-          defaultUser = "${secrets.username}";
-          theme = ./assets/slim-theme;
+          user = "${secrets.username}";
         };
       };
     };
