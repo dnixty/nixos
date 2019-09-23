@@ -4,6 +4,7 @@ with lib;
 let
   cfg = config.profiles.desktop;
   secrets = import ../../secrets.nix;
+  my-slock = pkgs.slock.override { conf = builtins.readFile ../../assets/slock/config.def.h; };
 in
 {
   options = {
@@ -13,9 +14,9 @@ in
         description = "Enable desktop profile";
         type = types.bool;
       };
-      pulseaudio = mkOption {
+      audio = mkOption {
         default = true;
-        description = "Enable pulseaudio with desktop profile";
+        description = "Enable audio with desktop profile";
         type = types.bool;
       };
       networkmanager = mkOption {
@@ -26,10 +27,9 @@ in
     };
   };
   config = mkIf cfg.enable {
-    profiles.pulseaudio.enable = cfg.pulseaudio;
+    profiles.audio.enable = cfg.audio;
     networking.networkmanager = {
       enable = cfg.networkmanager;
-      packages = with pkgs; [ networkmanager-openvpn ];
     };
     services.xserver = {
       enable = true;
@@ -42,23 +42,21 @@ in
         '';
         auto = {
           enable = true;
-          user = "${secrets.username}";
+          user = secrets.username;
         };
       };
     };
-    security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
+    security.wrappers.slock.source = "${my-slock.out}/bin/slock";
     fonts = {
       enableFontDir = true;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
-        dejavu_fonts
         inconsolata
-        terminus_font
       ];
     };
     environment.systemPackages = with pkgs; [
       xss-lock
-      slock
+      my-slock
     ];
   };
 }

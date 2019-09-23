@@ -38,6 +38,7 @@ in
     laptop.enable = true;
     nitrokey.enable = true;
     vpn.enable = true;
+    zsh.enable = true;
     nix-config.buildCores = 4;
   };
 

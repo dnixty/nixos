@@ -15,6 +15,9 @@ in
     };
   };
   config = mkIf cfg.enable {
+    networking.networkmanager = {
+      packages = with pkgs; [ networkmanager-openvpn ];
+    };
     services.openvpn.servers = {
       mullvad = {
         config = ''

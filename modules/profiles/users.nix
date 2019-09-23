@@ -14,7 +14,7 @@ in
         type = types.bool;
       };
       user = mkOption {
-        default = "${secrets.username}";
+        default = secrets.username;
         description = "Username to use when creating user";
         type = types.str;
       };
@@ -29,6 +29,7 @@ in
           createHome = true;
           group = "users";
           home = "/home/${secrets.username}";
+          shell = mkIf config.profiles.zsh.enable pkgs.zsh;
           extraGroups = [ "wheel" "input" ] ++ optionals config.profiles.desktop.enable ["audio" "video" "lp" "networkmanager"]
             ++ optionals config.profiles.nitrokey.enable [ "nitrokey" ];
           openssh.authorizedKeys.keys =
