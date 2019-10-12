@@ -4,6 +4,7 @@
   imports = [
     ./profiles/base.nix
     ./profiles/bitcoin.nix
+    ./profiles/bitlbee.nix
     ./profiles/desktop.nix
     ./profiles/git.nix
     ./profiles/i18n.nix

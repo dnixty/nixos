@@ -34,6 +34,7 @@ in
   };
 
   profiles = {
+    bitlbee.enable = true;
     git.enable = true;
     laptop.enable = true;
     nitrokey.enable = true;
