@@ -18,7 +18,7 @@ in
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["cma=256M"];
+    kernelParams = ["cma=32M"];
     cleanTmpDir = true;
   };
 
