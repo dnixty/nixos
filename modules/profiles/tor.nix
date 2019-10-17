@@ -2,22 +2,22 @@
 
 with lib;
 let
-  cfg = config.profiles.audio;
+  cfg = config.profiles.tor;
 in
 {
   options = {
-    profiles.audio = {
+    profiles.tor = {
       enable = mkOption {
         default = false;
-        description = "Enable audio profile";
+        description = "Enable tor profile";
         type = types.bool;
       };
     };
   };
   config = mkIf cfg.enable {
-    sound = {
+    services.tor = {
       enable = true;
-      mediaKeys.enable = true;
+      client.enable = true;
     };
   };
 }

@@ -38,6 +38,7 @@ in
     git.enable = true;
     laptop.enable = true;
     nitrokey.enable = true;
+    tor.enable = true;
     vpn.enable = true;
     zsh.enable = true;
     nix-config.buildCores = 4;
