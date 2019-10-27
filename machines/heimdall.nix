@@ -27,6 +27,7 @@ in
 
   networking = {
     hosts = {
+      "${secrets.hosts.njord}" = [ "njord" ];
       "${secrets.hosts.asgard}" = [ "asgard" ];
       "${secrets.hosts.niflheim}" = [ "niflheim" ];
       "${secrets.hosts.midgard}" = [ "midgard" ];
