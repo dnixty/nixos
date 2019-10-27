@@ -36,7 +36,6 @@ in
   profiles = {
     bitlbee.enable = true;
     git.enable = true;
-    laptop.enable = true;
     nitrokey.enable = true;
     tor.enable = true;
     vpn.enable = true;

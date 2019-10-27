@@ -28,12 +28,12 @@ in
           uid = 1000;
           createHome = true;
           group = "users";
-          home = "/home/${secrets.username}";
+          home = "/home/${cfg.user}";
           shell = mkIf config.profiles.zsh.enable pkgs.zsh;
           extraGroups = [ "wheel" "input" ] ++ optionals config.profiles.desktop.enable ["audio" "video" "lp" "networkmanager"]
             ++ optionals config.profiles.nitrokey.enable [ "nitrokey" ];
           openssh.authorizedKeys.keys =
-            with import ../../secrets.nix; [ ssh.heimdall.key ssh.macbook.key ];
+            with import ../../secrets.nix; [ ssh.heimdall.key ];
         };
       };
     };
