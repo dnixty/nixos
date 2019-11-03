@@ -21,6 +21,7 @@ in
   profiles = {
     openssh.enable = true;
     git.enable = true;
+    prosody.enable = true;
     wireguard.enable = true;
   };
 
