@@ -17,6 +17,9 @@ in
   config = mkIf cfg.enable {
     services.prosody = {
       enable = true;
+      modules = {
+        mam = true;
+      };
     };
   };
 }
