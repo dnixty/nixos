@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  secrets = import ../secrets.nix;
   shared = import ../shared.nix;
 in
 {
