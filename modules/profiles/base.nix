@@ -3,7 +3,6 @@
 with lib;
 let
   cfg = config.profiles.base;
-  secrets = import ../../secrets.nix;
 in
 {
   options = {

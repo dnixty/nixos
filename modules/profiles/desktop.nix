@@ -3,7 +3,7 @@
 with lib;
 let
   cfg = config.profiles.desktop;
-  secrets = import ../../secrets.nix;
+  shared = import ../../shared.nix;
   my-slock = pkgs.slock.override { conf = builtins.readFile ../../assets/slock/config.def.h; };
 in
 {
@@ -42,7 +42,7 @@ in
         '';
         auto = {
           enable = true;
-          user = secrets.username;
+          user = shared.user.username;
         };
       };
     };

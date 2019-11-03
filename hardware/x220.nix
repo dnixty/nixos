@@ -8,11 +8,8 @@
 
   boot = {
     initrd.kernelModules = [ "i915" ];
-    kernelModules = [ "tp_smapi" ];
-    extraModulePackages = with config.boot.kernelPackages; [ tp_smapi ];
-    kernelParams = [
-      "i915.enable_rc6=7"
-    ];
+    kernelModules = [ "tp_smapi" "acpi_call" ];
+    extraModulePackages = with config.boot.kernelPackages; [ tp_smapi acpi_call ];
   };
   hardware = {
     trackpoint = {
@@ -26,7 +23,4 @@
       libvdpau-va-gl
     ];
   };
-  environment.systemPackages = with pkgs; [
-    linuxPackages.tp_smapi
-  ];
 }

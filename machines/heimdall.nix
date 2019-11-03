@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let secrets = import ../secrets.nix;
+let shared = import ../shared.nix;
 in
 {
    imports = [
@@ -27,10 +27,10 @@ in
 
   networking = {
     hosts = {
-      "${secrets.hosts.njord}" = [ "njord" ];
-      "${secrets.hosts.asgard}" = [ "asgard" ];
-      "${secrets.hosts.niflheim}" = [ "niflheim" ];
-      "${secrets.hosts.midgard}" = [ "midgard" ];
+      "${shared.hosts.njord}" = [ "njord" ];
+      "${shared.hosts.asgard}" = [ "asgard" ];
+      "${shared.hosts.niflheim}" = [ "niflheim" ];
+      "${shared.hosts.midgard}" = [ "midgard" ];
     };
   };
 
@@ -46,7 +46,7 @@ in
 
   # NFS resources
   fileSystems."/mnt/archive" = {
-    device = "${secrets.hosts.asgard}:/volume1/archive";
+    device = "${shared.hosts.asgard}:/volume1/archive";
     fsType = "nfs";
     options = ["x-systemd.automount" "noauto"];
   };

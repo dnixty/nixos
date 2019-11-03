@@ -3,7 +3,7 @@
 with lib;
 let
   cfg = config.profiles.users;
-  secrets = import ../../secrets.nix;
+  shared = import ../../shared.nix;
 in
 {
   options = {
@@ -14,7 +14,7 @@ in
         type = types.bool;
       };
       user = mkOption {
-        default = secrets.username;
+        default = shared.user.username;
         description = "Username to use when creating user";
         type = types.str;
       };
@@ -32,8 +32,7 @@ in
           shell = mkIf config.profiles.zsh.enable pkgs.zsh;
           extraGroups = [ "wheel" "input" ] ++ optionals config.profiles.desktop.enable ["audio" "video" "lp" "networkmanager"]
             ++ optionals config.profiles.nitrokey.enable [ "nitrokey" ];
-          openssh.authorizedKeys.keys =
-            with import ../../secrets.nix; [ ssh.heimdall.key ];
+          openssh.authorizedKeys.keys = shared.ssh_keys;
         };
       };
     };

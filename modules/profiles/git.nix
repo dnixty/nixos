@@ -2,7 +2,7 @@
 
 with lib;
 let
-  secrets = import ../../secrets.nix;
+  shared = import ../../shared.nix;
   cfg = config.profiles.git;
 in
 {
@@ -46,11 +46,13 @@ in
     added = green
     changed = yellow
     untarcked = red
+  [github]
+    user = ${shared.user.username}
   [push]
     default = matching
   [user]
-    name = ${secrets.git.name}
-    email = ${secrets.git.email}
+    name = ${shared.user.name}
+    email = ${shared.user.email}
       '';
     };
   };

@@ -3,7 +3,7 @@
 with lib;
 let
   cfg = config.profiles.openssh;
-  secrets = import ../../secrets.nix;
+  shared = import ../../shared.nix;
 in
 {
   options = {
@@ -20,7 +20,7 @@ in
       enable = true;
       passwordAuthentication = false;
       permitRootLogin = "no";
-      ports = [ secrets.ssh.port ];
+      ports = [ shared.ports.sshd ];
     };
   };
 }

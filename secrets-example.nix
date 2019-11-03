@@ -2,32 +2,16 @@
   hostname = "";
 
   networks = {
-    ssidname = {
+    skynet = {
       ssid = "";
       psk = "";
     };
   };
 
-  hosts = {
-    asgard = "";
-    niflheim = "";
-    midgard = "";
-  };
-
-  username = "";
-
-  git = {
-    name = "";
-    email = "";
-  };
-
-  ssh = {
-    port = 22;
-    heimdall = {
-      key = "";
-    };
-    macbook = {
-      key = "";
+  wireguard = {
+    privateKeys = {
+      njord = "";
+      tyr = "";
     };
   };
 }
