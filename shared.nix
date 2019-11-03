@@ -12,6 +12,11 @@
     10.206.94.135 njord.vpn.dnixty.com
     10.206.94.35 tyr.vpn.dnixty.com
     10.206.94.130 heimdall.vpn.dnixty.com
+    10.206.94.199 hel.vpn.dnixty.com
+
+    192.168.1.1 hel.home.dnixty.com
+    192.168.1.18 asgard.home.dnixty.com
+    192.168.1.118 odin.home.dnixty.com
 
     209.250.247.32 njord
     192.168.1.18 asgard
@@ -29,6 +34,7 @@
       njord.ips = [ "10.206.94.135/24" ];
       tyr.ips = [ "10.206.94.35/24" ];
       heimdall.ips = [ "10.206.94.130/24" ];
+      hel.ips = [ "10.206.94.199/24" ];
     };
     peers = {
       njord = {
@@ -44,6 +50,12 @@
       heimdall = {
         publicKey = "gH1cBycyLz5+i/7P023swUA22oIr1MPZCOp/FjHZexA=";
         allowedIPs = [ "10.206.94.130/32" ];
+      };
+      hel = {
+        publicKey = "bX1DAqr43sW3HrcX+6NtVz+gTt6WwreJI/wrb5tXKls=";
+        allowedIPs = [ "10.206.94.199/32" ];
+        endpoint = "hel.dnixty.com:53898";
+        persistentKeepalive = 25;
       };
     };
   };

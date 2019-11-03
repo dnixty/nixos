@@ -50,6 +50,7 @@ in
         peers = [
           shared.wireguard.peers.tyr
           shared.wireguard.peers.heimdall
+          shared.wireguard.peers.hel
         ];
       };
     };

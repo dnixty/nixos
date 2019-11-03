@@ -47,7 +47,7 @@ in
         privateKey = secrets.wireguard.privateKeys.heimdall;
         peers = [
           shared.wireguard.peers.njord
-          shared.wireguard.peers.tyr
+          shared.wireguard.peers.hel
         ];
       };
     };
