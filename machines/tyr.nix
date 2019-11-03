@@ -5,9 +5,9 @@ let
   shared = import ../shared.nix;
 in
 {
-   imports = [
+  imports = [
     ../hardware/x220.nix
-   ];
+  ];
 
   boot = {
     loader.grub = {

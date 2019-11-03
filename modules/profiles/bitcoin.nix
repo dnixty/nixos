@@ -2,6 +2,7 @@
 
 with lib;
 let
+  shared = import ../../shared.nix;
   cfg = config.profiles.bitcoin;
 in
 {
@@ -25,6 +26,7 @@ in
     };
   };
   config = mkIf cfg.enable {
+    profiles.tor.enable = true;
     networking.firewall.allowedTCPPorts = [ 8332 18332 ];
     environment.systemPackages = with pkgs; [
       unstable.bitcoind
@@ -33,8 +35,7 @@ in
       enable = cfg.autostart;
       description = "Bitcoin daemon";
       serviceConfig = {
-        ExecStartPre="/bin/sh -c 'sleep 30'";
-        ExecStart = "${pkgs.unstable.bitcoind}/bin/bitcoind -daemon -datadir=${cfg.configDir} -pid=${cfg.configDir}/bitcoind.pid";
+        ExecStart = "${pkgs.unstable.bitcoind}/bin/bitcoind -daemon -datadir=${cfg.configDir} -conf=${cfg.configDir}/bitcoin.conf -pid=${cfg.configDir}/bitcoind.pid";
         PIDFile="${cfg.configDir}/bitcoind.pid";
         Type = "forking";
         KillMode = "process";
@@ -43,6 +44,11 @@ in
         RestartSec = 30;
       };
       wantedBy = [ "multi-user.target" ];
+    };
+    system.activationScripts = {
+      bitcoinDir = ''
+        ln -s ${cfg.configDir} /home/${shared.user.username}/.bitcoind
+      '';
     };
   };
 }
