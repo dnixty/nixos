@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-let shared = import ../shared.nix;
+let
+  secrets = import ../secrets.nix;
+  shared = import ../shared.nix;
 in
 {
    imports = [
@@ -40,11 +42,12 @@ in
     };
     wireguard.interfaces = {
       wg0 = {
-        ips = shared.wireguard.interfaces.tyr.ips;
+        ips = shared.wireguard.interfaces.heimdall.ips;
         listenPort = shared.ports.wireguard;
-        privateKey = secrets.wireguard.privateKeys.tyr;
+        privateKey = secrets.wireguard.privateKeys.heimdall;
         peers = [
           shared.wireguard.peers.njord
+          shared.wireguard.peers.tyr
         ];
       };
     };

@@ -3,6 +3,7 @@
 with lib;
 let
   secrets = import ../secrets.nix;
+  shared = import ../shared.nix;
 in
 {
   boot = {
@@ -51,7 +52,7 @@ in
       fsType = "ext4";
     };
     "/mnt/bitcoin" = {
-      device = "${secrets.hosts.asgard}:/volume1/bitcoin";
+      device = "${shared.hosts.asgard}:/volume1/bitcoin";
       fsType = "nfs";
       options = ["x-systemd.automount" "noauto"];
     };
