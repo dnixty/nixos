@@ -28,12 +28,7 @@ in
   time.timeZone = "Europe/London";
 
   networking = {
-    hosts = {
-      "${shared.hosts.njord}" = [ "njord" ];
-      "${shared.hosts.asgard}" = [ "asgard" ];
-      "${shared.hosts.niflheim}" = [ "niflheim" ];
-      "${shared.hosts.midgard}" = [ "midgard" ];
-    };
+    extraHosts = shared.extraHosts;
     nat = {
       enable = true;
       externalInterface = "wlp2s0";

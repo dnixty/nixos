@@ -8,6 +8,16 @@
     wireguard = 53898;
     sshd = 65130;
   };
+  extraHosts = ''
+    10.206.94.135 njord.vpn.dnixty.com
+    10.206.94.35 tyr.vpn.dnixty.com
+    10.206.94.130 heimdall.vpn.dnixty.com
+
+    209.250.247.32 njord
+    192.168.1.18 asgard
+    192.168.1.1 niflheim
+    192.168.1.118 midgard
+  '';
   hosts = {
     njord = "209.250.247.32";
     asgard = "192.168.1.18";
@@ -18,6 +28,7 @@
     interfaces = {
       njord.ips = [ "10.206.94.135/24" ];
       tyr.ips = [ "10.206.94.35/24" ];
+      heimdall.ips = [ "10.206.94.130/24" ];
     };
     peers = {
       njord = {
@@ -29,6 +40,10 @@
       tyr = {
         publicKey = "VgEoB6f8pSvgQsuyhB9wLn2V7iBPLN54UZDkW1cZX38=";
         allowedIPs = [ "10.206.94.35/32" ];
+      };
+      heimdall = {
+        publicKey = "gH1cBycyLz5+i/7P023swUA22oIr1MPZCOp/FjHZexA=";
+        allowedIPs = [ "10.206.94.130/32" ];
       };
     };
   };

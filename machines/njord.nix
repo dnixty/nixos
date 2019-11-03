@@ -30,6 +30,7 @@ in
     };
   };
   networking = {
+    extraHosts = shared.extraHosts;
     nat = {
       enable = true;
       externalInterface = "ens3";

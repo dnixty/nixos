@@ -26,11 +26,27 @@ in
   time.timeZone = "Europe/London";
 
   networking = {
-    hosts = {
-      "${shared.hosts.njord}" = [ "njord" ];
-      "${shared.hosts.asgard}" = [ "asgard" ];
-      "${shared.hosts.niflheim}" = [ "niflheim" ];
-      "${shared.hosts.midgard}" = [ "midgard" ];
+    extraHosts = shared.extraHosts;
+    nat = {
+      enable = true;
+      externalInterface = "wlp2s0";
+      internalInterfaces = [ "wg0" ];
+    };
+    firewall = {
+      allowedUDPPorts = [ shared.ports.wireguard ];
+      extraCommands = ''
+        iptables -t nat -A POSTROUTING -s 10.206.94.0/24 -o wlp2s0 -j MASQUERADE
+      '';
+    };
+    wireguard.interfaces = {
+      wg0 = {
+        ips = shared.wireguard.interfaces.tyr.ips;
+        listenPort = shared.ports.wireguard;
+        privateKey = secrets.wireguard.privateKeys.tyr;
+        peers = [
+          shared.wireguard.peers.njord
+        ];
+      };
     };
   };
 
