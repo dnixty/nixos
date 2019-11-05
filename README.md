@@ -1,6 +1,7 @@
-* My NixOS system configuration
+# My NixOS system configuration
 
-** Installation
+## Installation
+
 Clone the repository
 ```
 git clone https://github.com/dnixty/nixos-config.git ~/nixos-config
