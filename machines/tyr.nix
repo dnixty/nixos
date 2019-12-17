@@ -17,9 +17,8 @@ in
     };
     initrd.luks.devices = [
       {
-        name = "root";
+        name = "crypt-lvm";
         device = "/dev/sda2";
-        preLVM = true;
       }
     ];
     cleanTmpDir = true;
@@ -54,14 +53,12 @@ in
   };
 
   profiles = {
-    bitlbee.enable = true;
     git.enable = true;
     laptop.enable = true;
-    nitrokey.enable = true;
     tor.enable = true;
-    wireguard.enable = true;
+    # TODO: setup private key
+    wireguard.enable = false;
     vpn.enable = true;
-    zsh.enable = true;
     nix-config.buildCores = 4;
   };
 
