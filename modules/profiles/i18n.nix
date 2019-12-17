@@ -17,8 +17,8 @@ in
   config = mkIf cfg.enable {
     i18n = {
       consoleFont = "Lat2-Terminus16";
-      consoleKeyMap = "us";
       defaultLocale = "en_GB.UTF-8";
+      consoleUseXkbConfig = true;
     };
   };
 }
