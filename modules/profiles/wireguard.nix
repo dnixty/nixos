@@ -9,11 +9,7 @@ in
 {
   options = {
     profiles.wireguard = {
-      enable = mkOption {
-        default = false;
-        description = "Enable wireguard profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable wireguard profile";
     };
   };
   config = mkIf cfg.enable {

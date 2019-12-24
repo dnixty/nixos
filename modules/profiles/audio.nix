@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let
@@ -7,14 +7,11 @@ in
 {
   options = {
     profiles.audio = {
-      enable = mkOption {
-        default = false;
-        description = "Enable audio profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable audio profile";
     };
   };
   config = mkIf cfg.enable {
+    hardware.pulseaudio.enable = true;
     sound = {
       enable = true;
       mediaKeys.enable = true;

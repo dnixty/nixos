@@ -56,7 +56,6 @@ in
   profiles = {
     bitlbee.enable = true;
     git.enable = true;
-    nitrokey.enable = true;
     tor.enable = true;
     vpn.enable = true;
     zsh.enable = true;
@@ -65,7 +64,7 @@ in
 
   # NFS resources
   fileSystems."/mnt/archive" = {
-    device = "${shared.hosts.asgard}:/volume1/archive";
+    device = "${asgard}:/volume1/archive";
     fsType = "nfs";
     options = ["x-systemd.automount" "noauto"];
   };

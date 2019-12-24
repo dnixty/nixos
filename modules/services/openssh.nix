@@ -8,11 +8,7 @@ in
 {
   options = {
     profiles.openssh = {
-      enable = mkOption {
-        default = false;
-        description = "Enable openssh profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable openssh profile";
     };
   };
   config = mkIf cfg.enable {

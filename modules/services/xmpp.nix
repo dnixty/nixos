@@ -7,16 +7,11 @@ in
 {
   options = {
     profiles.xmpp = {
-      enable = mkOption {
-        default = false;
-        description = "Enable xmpp profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable xmpp service";
     };
   };
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [5222 5269];
-
     services.nginx.virtualHosts."xmpp.dnixty.com" = {
       forceSSL = true;
       enableACME = true;
@@ -25,14 +20,11 @@ in
         return 404;
       '';
     };
-
     security.acme.certs."xmpp.dnixty.com".postRun = concatStringsSep " && " [
       "${pkgs.coreutils}/bin/install -D -m 0700 -o prosody -g prosody /var/lib/acme/xmpp.dnixty.com/fullchain.pem /var/lib/prosody/tls.crt"
       "${pkgs.coreutils}/bin/install -D -m 0700 -o prosody -g prosody /var/lib/acme/xmpp.dnixty.com/key.pem /var/lib/prosody/tls.key"
       "systemctl restart prosody.service"
-
     ];
-
     services.prosody = {
       enable = true;
       modules = {

@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-
+{ ... }:
 let
   secrets = import ../secrets.nix;
   shared = import ../shared.nix;
@@ -8,7 +7,6 @@ in
   imports = [
     ../hardware/x220.nix
   ];
-
   boot = {
     loader.grub = {
       enable = true;
@@ -23,9 +21,7 @@ in
     ];
     cleanTmpDir = true;
   };
-
   time.timeZone = "Europe/London";
-
   networking = {
     extraHosts = shared.extraHosts;
     nat = {
@@ -51,20 +47,16 @@ in
       };
     };
   };
-
   profiles = {
     git.enable = true;
-    laptop.enable = true;
     tor.enable = true;
     # TODO: setup private key
     wireguard.enable = false;
     vpn.enable = true;
     nix-config.buildCores = 4;
   };
-
-  # NFS resources
   fileSystems."/mnt/archive" = {
-    device = "${shared.hosts.asgard}:/volume1/archive";
+    device = "asgard:/volume1/archive";
     fsType = "nfs";
     options = ["x-systemd.automount" "noauto"];
   };

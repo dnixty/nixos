@@ -1,12 +1,10 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-
   profiles = {
     laptop.enable = true;
     ssd.enable = true;
   };
-
   services = {
     actkbd = {
       enable = true;
@@ -15,8 +13,6 @@
         { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
       ];
     };
-
-    # TODO: Change to libinput as synaptics is deprecated
     xserver.synaptics = {
       enable = true;
       twoFingerScroll = true;
@@ -28,7 +24,6 @@
       accelFactor = "0.075";
     };
   };
-
   programs.light.enable = true;
 }
 

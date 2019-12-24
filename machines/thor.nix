@@ -18,7 +18,7 @@ in
 
   profiles = {
     git.enable = true;
-    bitcoin.enable = true;
+    bitcoind.enable = true;
   };
 
   fileSystems = {

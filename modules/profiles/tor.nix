@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let
@@ -7,11 +7,7 @@ in
 {
   options = {
     profiles.tor = {
-      enable = mkOption {
-        default = false;
-        description = "Enable tor profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable tor profile";
     };
   };
   config = mkIf cfg.enable {

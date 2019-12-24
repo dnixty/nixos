@@ -9,28 +9,16 @@ in
 {
   options = {
     profiles.desktop = {
-      enable = mkOption {
-        default = false;
-        description = "Enable desktop profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable desktop profile";
       audio = mkOption {
         default = true;
         description = "Enable audio with desktop profile";
-        type = types.bool;
-      };
-      networkmanager = mkOption {
-        default = true;
-        description = "Enable networkmanager with desktop profile";
         type = types.bool;
       };
     };
   };
   config = mkIf cfg.enable {
     profiles.audio.enable = cfg.audio;
-    networking.networkmanager = {
-      enable = cfg.networkmanager;
-    };
     services.xserver = {
       enable = true;
       autoRepeatDelay = 250;
@@ -52,6 +40,7 @@ in
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
         inconsolata
+        hack-font
       ];
     };
     environment.systemPackages = with pkgs; [

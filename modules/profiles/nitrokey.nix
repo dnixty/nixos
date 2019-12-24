@@ -7,11 +7,7 @@ in
 {
   options = {
     profiles.nitrokey = {
-      enable = mkOption {
-        default = false;
-        description = "Enable nitrokey profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable nitrokey profile";
     };
   };
   config = mkIf cfg.enable {

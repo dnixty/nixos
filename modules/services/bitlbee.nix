@@ -7,11 +7,7 @@ in
 {
   options = {
     profiles.bitlbee = {
-      enable = mkOption {
-        default = false;
-        description = "Enable bitlbee profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable bitlbee profile";
     };
   };
   config = mkIf cfg.enable {

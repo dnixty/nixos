@@ -7,11 +7,7 @@ in
 {
   options = {
     profiles.vpn = {
-      enable = mkOption {
-        default = false;
-        description = "Enable vpn profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable vpn profile";
     };
   };
   config = mkIf cfg.enable {

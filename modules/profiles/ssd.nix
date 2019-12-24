@@ -7,18 +7,13 @@ in
 {
   options = {
     profiles.ssd = {
-      enable = mkOption {
-        default = false;
-        description = "Enable ssd profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable ssd profile";
     };
   };
   config = mkIf cfg.enable {
     boot.kernel.sysctl = {
       "vm.swappiness" = lib.mkDefault 1;
     };
-
     services.fstrim.enable = lib.mkDefault true;
   };
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let
@@ -14,17 +14,16 @@ in
       };
     };
   };
-
   config = mkIf cfg.enable {
-    i18n = {
-      defaultLocale = "en_GB.UTF-8";
+    networking.networkmanager = {
+      enable = true;
     };
-    # Move to profiles/cron?
+    i18n = {
+      consoleFont = "Lat2-Terminus16";
+      defaultLocale = "en_GB.UTF-8";
+      consoleUseXkbConfig = true;
+    };
     services.locate.enable = true;
     services.locate.interval = "00 12 * * *";
-
-    environment.systemPackages = with pkgs; [
-      vim
-    ];
   };
 }

@@ -3,16 +3,12 @@
 with lib;
 let
   shared = import ../../shared.nix;
-  cfg = config.profiles.bitcoin;
+  cfg = config.profiles.bitcoind;
 in
 {
   options = {
-    profiles.bitcoin = {
-      enable = mkOption {
-        default = false;
-        description = "Enable bitcoin profile";
-        type = types.bool;
-      };
+    profiles.bitcoind = {
+      enable = mkEnableOption "Enable bitcoind profile";
       autostart = mkOption {
         default = true;
         description = "Autostart bitcoind on boot";
@@ -21,7 +17,7 @@ in
       configDir = mkOption {
         default = "/mnt/bitcoin";
         description = "Bitcoin data location";
-        type = types.string;
+        type = types.str;
       };
     };
   };

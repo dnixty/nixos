@@ -8,11 +8,7 @@ in
 {
   options = {
     profiles.git = {
-      enable = mkOption {
-        default = false;
-        description = "Enable git profile";
-        type = types.bool;
-      };
+      enable = mkEnableOption "Enable git profile";
     };
   };
   config = mkIf cfg.enable {
@@ -29,25 +25,6 @@ in
     b = branch --color -v
     br = branch
     unstage = reset HEAD
-  [color]
-    branch = auto
-    diff = auto
-    status = auto
-  [color "branch"]
-    current = cyan reverse
-    local = cyan
-    remote = green
-  [color "diff"]
-    meta = white reverse
-    frag = magenta reverse
-    old = red
-    new = green
-  [color "status"]
-    added = green
-    changed = yellow
-    untarcked = red
-  [github]
-    user = ${shared.user.username}
   [push]
     default = matching
   [user]
