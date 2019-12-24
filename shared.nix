@@ -18,13 +18,13 @@
     192.168.1.18 asgard.home.dnixty.com
     192.168.1.118 odin.home.dnixty.com
 
-    209.250.247.32 njord
+    45.76.34.183 njord
     192.168.1.18 asgard
     192.168.1.1 niflheim
     192.168.1.118 midgard
   '';
   hosts = {
-    njord = "209.250.247.32";
+    njord = "45.76.34.183";
     asgard = "192.168.1.18";
     niflheim = "192.168.1.1";
     midgard = "192.168.1.118";
@@ -38,7 +38,7 @@
     };
     peers = {
       njord = {
-        publicKey = "GqfxaEbt1i6UYavN9nv81Q+Pxh701izAZpbl6hq0P2U=";
+        publicKey = "xz2lJpjUm9OJoWZNdmsYhOb1f/LSlNtFihag9KuYdCg=";
         allowedIPs = [ "10.206.94.135/32" ];
         endpoint = "njord.dnixty.com:53898";
         persistentKeepalive = 25;
