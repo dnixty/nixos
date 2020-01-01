@@ -15,20 +15,14 @@
     10.206.94.199 hel.vpn.dnixty.com
 
     192.168.1.1 hel.home.dnixty.com
-    192.168.1.18 asgard.home.dnixty.com
-    192.168.1.118 odin.home.dnixty.com
+    192.168.1.18 odin.home.dnixty.com
+    192.168.1.118 thor.home.dnixty.com
 
     45.76.34.183 njord
-    192.168.1.18 asgard
-    192.168.1.1 niflheim
-    192.168.1.118 midgard
+    192.168.1.18 odin
+    192.168.1.1 hel
+    192.168.1.118 thor
   '';
-  hosts = {
-    njord = "45.76.34.183";
-    asgard = "192.168.1.18";
-    niflheim = "192.168.1.1";
-    midgard = "192.168.1.118";
-  };
   wireguard = {
     interfaces = {
       njord.ips = [ "10.206.94.135/24" ];

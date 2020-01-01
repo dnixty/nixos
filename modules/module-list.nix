@@ -13,7 +13,7 @@
     ./profiles/ssd.nix
     ./profiles/tor.nix
     ./profiles/users.nix
-    ./profiles/vpn.nix
+    ./profiles/openvpn.nix
     ./profiles/wireguard.nix
     ./profiles/zsh.nix
     ./services/bitcoind.nix

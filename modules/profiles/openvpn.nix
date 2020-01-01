@@ -2,12 +2,12 @@
 
 with lib;
 let
-  cfg = config.profiles.vpn;
+  cfg = config.profiles.openvpn;
 in
 {
   options = {
-    profiles.vpn = {
-      enable = mkEnableOption "Enable vpn profile";
+    profiles.openvpn = {
+      enable = mkEnableOption "Enable openvpn profile";
     };
   };
   config = mkIf cfg.enable {
@@ -17,7 +17,7 @@ in
     services.openvpn.servers = {
       mullvad = {
         config = ''
-          config /home/dnixty/vpn/mullvad_gb.conf
+          config /home/dnixty/openvpn/mullvad_gb.conf
         '';
         autoStart = true;
         updateResolvConf = true;

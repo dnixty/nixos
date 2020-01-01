@@ -50,13 +50,12 @@ in
   profiles = {
     git.enable = true;
     tor.enable = true;
-    # TODO: setup private key
-    wireguard.enable = false;
-    vpn.enable = true;
+    openvpn.enable = true;
+    wireguard.enable = true;
     nix-config.buildCores = 4;
   };
   fileSystems."/mnt/archive" = {
-    device = "asgard:/volume1/archive";
+    device = "odin:/volume1/archive";
     fsType = "nfs";
     options = ["x-systemd.automount" "noauto"];
   };

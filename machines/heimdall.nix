@@ -54,17 +54,16 @@ in
   };
 
   profiles = {
-    bitlbee.enable = true;
     git.enable = true;
     tor.enable = true;
-    vpn.enable = true;
-    zsh.enable = true;
+    openvpn.enable = true;
+    wireguard.enable = true;
     nix-config.buildCores = 4;
   };
 
   # NFS resources
   fileSystems."/mnt/archive" = {
-    device = "${asgard}:/volume1/archive";
+    device = "odin:/volume1/archive";
     fsType = "nfs";
     options = ["x-systemd.automount" "noauto"];
   };
