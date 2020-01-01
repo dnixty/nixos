@@ -32,7 +32,7 @@
     };
     peers = {
       njord = {
-        publicKey = "xz2lJpjUm9OJoWZNdmsYhOb1f/LSlNtFihag9KuYdCg=";
+        publicKey = "BWHsBdcPZ/88PL+HPko52MgoI8kowMNucpWfpSVPGTA=";
         allowedIPs = [ "10.206.94.135/32" ];
         endpoint = "njord.dnixty.com:53898";
         persistentKeepalive = 25;
