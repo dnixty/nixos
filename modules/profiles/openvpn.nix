@@ -17,7 +17,7 @@ in
     services.openvpn.servers = {
       mullvad = {
         config = ''
-          config /home/dnixty/openvpn/mullvad_gb.conf
+          config /home/dnixty/vpn/mullvad_gb.conf
         '';
         autoStart = true;
         updateResolvConf = true;
