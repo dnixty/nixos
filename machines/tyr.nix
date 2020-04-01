@@ -48,6 +48,7 @@ in
     };
   };
   profiles = {
+    bluetooth.enable = true;
     git.enable = true;
     tor.enable = true;
     openvpn.enable = true;

@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let
@@ -11,7 +11,10 @@ in
     };
   };
   config = mkIf cfg.enable {
-    hardware.pulseaudio.enable = true;
+    hardware.pulseaudio = {
+      enable = true;
+      package = pkgs.pulseaudioFull;
+    };
     sound = {
       enable = true;
       mediaKeys.enable = true;
