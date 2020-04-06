@@ -20,6 +20,7 @@
     ./services/bitcoind.nix
     ./services/bitlbee.nix
     ./services/openssh.nix
+    ./services/printing.nix
     ./services/xmpp.nix
   ];
 }

@@ -54,6 +54,7 @@ in
     openvpn.enable = true;
     wireguard.enable = true;
     nix-config.buildCores = 4;
+    printing.enable = true;
   };
   fileSystems."/mnt/archive" = {
     device = "odin:/volume1/archive";
