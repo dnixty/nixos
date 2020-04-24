@@ -18,6 +18,7 @@ in
     };
     services = {
       tlp.enable = true;
+      acpid.enable = true;
     };
   };
 }
