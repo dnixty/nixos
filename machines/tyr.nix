@@ -54,6 +54,7 @@ in
     wireguard.enable = true;
     nix-config.buildCores = 4;
     printing.enable = true;
+    autologin-tty1.enable = true;
   };
   fileSystems."/mnt/archive" = {
     device = "odin:/volume1/archive";

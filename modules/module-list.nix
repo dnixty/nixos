@@ -17,6 +17,7 @@
     ./profiles/users.nix
     ./profiles/wireguard.nix
     ./profiles/zsh.nix
+    ./services/autologin-tty1.nix
     ./services/bitcoind.nix
     ./services/bitlbee.nix
     ./services/openssh.nix
