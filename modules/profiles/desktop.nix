@@ -39,7 +39,6 @@ in
       enableFontDir = true;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
-        inconsolata
         hack-font
       ];
     };
