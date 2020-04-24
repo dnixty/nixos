@@ -21,4 +21,5 @@
       libvdpau-va-gl
     ];
   };
+  services.thinkfan.enable = true;
 }
