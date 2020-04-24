@@ -7,6 +7,7 @@
   };
   boot = {
     initrd.kernelModules = [ "i915" ];
+    kernelParams = [ "intel_idle.max_cstate=1" ];
   };
   hardware = {
     trackpoint = {
