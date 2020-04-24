@@ -13,6 +13,8 @@
     trackpoint = {
       enable = true;
       emulateWheel = true;
+      sensitivity = 215;
+      speed = 150;
     };
     cpu.intel.updateMicrocode = true;
     opengl.extraPackages = with pkgs; [
