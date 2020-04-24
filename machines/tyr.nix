@@ -13,12 +13,11 @@ in
       version = 2;
       device = "/dev/sda";
     };
-    initrd.luks.devices = [
-      {
-        name = "crypt-lvm";
-        device = "/dev/sda2";
-      }
-    ];
+    initrd.luks.devices = {
+      crypt-lvm = {
+        device = "/dev/disk/by-uuid/fbbd0ea1-9839-477b-a47d-0fbe5de5d270";
+      };
+    };
     cleanTmpDir = true;
   };
   time.timeZone = "Europe/London";
