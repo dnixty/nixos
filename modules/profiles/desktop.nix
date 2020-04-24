@@ -26,6 +26,10 @@ in
           startx.enable = true;
         };
       };
+      picom = {
+        enable = true;
+        vSync = true;
+      };
     };
     security.wrappers.slock.source = "${my-slock.out}/bin/slock";
     fonts = {
