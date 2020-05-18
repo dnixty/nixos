@@ -15,13 +15,11 @@ in
       version = 2;
       device = "/dev/nvme0n1";
     };
-    initrd.luks.devices = [
-      {
-        name = "root";
-        device = "/dev/nvme0n1p2";
-        preLVM = true;
-      }
-    ];
+    initrd.luks.devices = {
+      crypt-lvm = {
+        device = "/dev/disk/by-uuid/c42fc2e8-d3d9-46f3-8262-c27131bca23e";
+      };
+    };
     cleanTmpDir = true;
   };
 
@@ -59,6 +57,8 @@ in
     tor.enable = true;
     openvpn.enable = true;
     wireguard.enable = true;
+    printing.enable = true;
+    autologin-tty1.enable = true;
     nix-config.buildCores = 4;
   };
 
