@@ -20,6 +20,7 @@
     ./services/autologin-tty1.nix
     ./services/bitcoind.nix
     ./services/bitlbee.nix
+    ./services/nas.nix
     ./services/openssh.nix
     ./services/printing.nix
     ./services/xmpp.nix

@@ -59,13 +59,7 @@ in
     wireguard.enable = true;
     printing.enable = true;
     autologin-tty1.enable = true;
+    nas.enable = true;
     nix-config.buildCores = 4;
-  };
-
-  # NFS resources
-  fileSystems."/mnt/archive" = {
-    device = "odin:/volume1/archive";
-    fsType = "nfs";
-    options = ["x-systemd.automount" "noauto"];
   };
 }
