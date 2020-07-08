@@ -60,6 +60,5 @@ in
     printing.enable = true;
     autologin-tty1.enable = true;
     nas.enable = true;
-    nix-config.buildCores = 4;
   };
 }

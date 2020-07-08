@@ -3,7 +3,7 @@
 with lib;
 let
   cfg = config.profiles.desktop;
-  my-slock = pkgs.slock.override { conf = builtins.readFile ../../assets/slock/config.def.h; };
+  shared = import ../../shared.nix;
 in
 {
   options = {
@@ -25,13 +25,21 @@ in
         displayManager = {
           startx.enable = true;
         };
+        desktopManager = {
+          xfce.enable = true;
+        };
       };
       picom = {
         enable = true;
-        vSync = true;
+        fade = true;
+        inactiveOpacity = "0.9";
+        shadow = true;
+        fadeDelta = 4;
       };
     };
-    security.wrappers.slock.source = "${my-slock.out}/bin/slock";
+    programs = {
+      slock.enable = true;
+    };
     fonts = {
       enableFontDir = true;
       enableGhostscriptFonts = true;
@@ -41,7 +49,6 @@ in
     };
     environment.systemPackages = with pkgs; [
       xss-lock
-      my-slock
     ];
   };
 }

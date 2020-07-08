@@ -3,7 +3,6 @@
 {
   profiles = {
     laptop.enable = true;
-    ssd.enable = true;
   };
   boot = {
     initrd.kernelModules = [ "i915" ];
@@ -21,7 +20,7 @@
       vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
+      intel-media-driver
     ];
   };
-  services.thinkfan.enable = true;
 }

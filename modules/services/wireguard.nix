@@ -3,8 +3,6 @@
 with lib;
 let
   cfg = config.profiles.wireguard;
-  secrets = import ../../secrets.nix;
-  shared = import ../../shared.nix;
 in
 {
   options = {

@@ -29,9 +29,7 @@ in
           createHome = true;
           group = "users";
           home = "/home/${cfg.user}";
-          shell = mkIf config.profiles.zsh.enable pkgs.zsh;
-          extraGroups = [ "wheel" "input" ] ++ optionals config.profiles.desktop.enable ["audio" "video" "lp" "networkmanager"]
-            ++ optionals config.profiles.nitrokey.enable [ "nitrokey" ];
+          extraGroups = [ "wheel" "input" ] ++ optionals config.profiles.desktop.enable ["audio" "video" "lp" "networkmanager"];
           openssh.authorizedKeys.keys = shared.ssh_keys;
         };
       };

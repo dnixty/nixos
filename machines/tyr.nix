@@ -47,14 +47,13 @@ in
     };
   };
   profiles = {
-    bluetooth.enable = true;
-    git.enable = true;
-    tor.enable = true;
-    openvpn.enable = true;
-    wireguard.enable = true;
-    nix-config.buildCores = 4;
-    printing.enable = true;
     autologin-tty1.enable = true;
+    bluetooth.enable = true;
+    desktop.enable = true;
+    git.enable = true;
     nas.enable = true;
+    printing.enable = true;
+    tor.enable = true;
+    wireguard.enable = true;
   };
 }
