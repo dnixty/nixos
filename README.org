@@ -1,0 +1,23 @@
+* My NixOS system configuration
+
+** Installation
+Clone this repository
+#+BEGIN_SRC sh
+git clone https://github.com/dnixty/nixos-config.git ~/src/nixos-config
+#+END_SRC
+
+Copy original ~hardware-configuration.nix~
+#+BEGIN_SRC sh
+sudo cp /etc/nixos/hardware-configuration.nix ~/nixos-config
+sudo chown dnixty:users ~/nixos-config/hardware-configuration.nix
+#+END_SRC
+
+Link ~nixos-config~
+#+BEGIN_SRC sh
+sudo ln -s /home/dnixty/nixos-config /etc/nixos
+#+END_SRC
+
+Rebuild NixOS
+#+BEGIN_SRC sh
+sudo nixos-rebuild switch
+#+END_SRC
