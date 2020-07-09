@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../hardware/x220.nix
+    ../modules/laptop.nix
   ];
   boot = {
     loader.grub = {
@@ -45,15 +46,5 @@ in
         ];
       };
     };
-  };
-  profiles = {
-    autologin-tty1.enable = true;
-    bluetooth.enable = true;
-    desktop.enable = true;
-    git.enable = true;
-    nas.enable = true;
-    printing.enable = true;
-    tor.enable = true;
-    wireguard.enable = true;
   };
 }

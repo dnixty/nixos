@@ -1,17 +1,13 @@
 { ... }:
-
-let secrets = import ./secrets.nix;
+let
+  secrets = import ./secrets.nix;
 in
-rec {
+{
   imports =
     [
-      # Generated hardware configuration
       ./hardware-configuration.nix
-      # Default profile with default configuration
-      ./modules/module-list.nix
-      # Machine specific configuration files
+      ./modules/base.nix
       (./machines + "/${secrets.hostname}.nix")
     ];
-
   networking.hostName = "${secrets.hostname}";
 }

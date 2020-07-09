@@ -1,10 +1,5 @@
 { ... }:
-
 {
-  profiles = {
-    laptop.enable = true;
-    ssd.enable = true;
-  };
   services = {
     actkbd = {
       enable = true;
@@ -26,4 +21,3 @@
   };
   programs.light.enable = true;
 }
-

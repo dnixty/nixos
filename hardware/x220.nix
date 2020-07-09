@@ -1,9 +1,5 @@
 { pkgs, ... }:
-
 {
-  profiles = {
-    laptop.enable = true;
-  };
   boot = {
     initrd.kernelModules = [ "i915" ];
     kernelParams = [ "intel_idle.max_cstate=1" ];
